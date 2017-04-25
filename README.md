@@ -1,6 +1,8 @@
 # PokemonClone
 A r/learnprogramming group project
 
+Lastest Pull(or close) is live [on my website](http://boxerbomb.com/reddit/)
+
 This is created using PhaserJS and it ended up being more complex than I originally planned.
 It uses Tiled to manage the tilemap and it reads in .json for map data.
 
@@ -30,3 +32,6 @@ door:
 "type"-->"door"
 "sprite"-->"browndoor"
 "roomnum"(int)-->desired room number
+
+#Preload
+All assets are assigned in the preload.js file. You must add files there before calling them.
