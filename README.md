@@ -33,5 +33,5 @@ door:
 "sprite"-->"browndoor"
 "roomnum"(int)-->desired room number
 
-#Preload
+# Preload
 All assets are assigned in the preload.js file. You must add files there before calling them.
