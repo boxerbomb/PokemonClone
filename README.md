@@ -8,6 +8,8 @@ It uses slick-ui for the in-game menu.
 
 The project is based on [this tutorial](https://gamedevacademy.org/html5-phaser-tutorial-top-down-games-with-tiled) 
 
+I will work on a better tutorial for making maps to better help the community.
+
 ----------------------------------------------------------------------
 # Map Data
 The map can be any size with 64px tiles
