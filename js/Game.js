@@ -110,6 +110,7 @@ TopDownGame.Game.prototype = {
     result.forEach(function(element){
       this.createFromTiledObject(element, this.NPC);
     }, this);
+    this.NPC.setAll('body.immovable', true);
   },
 
   //find objects in a Tiled layer that containt a property called "type" equal to a certain value
@@ -154,7 +155,7 @@ TopDownGame.Game.prototype = {
     //collision
     this.game.physics.arcade.collide(this.player, this.blockedLayer);
     this.game.physics.arcade.overlap(this.player, this.items, this.collect, null, this);
-    this.game.physics.arcade.overlap(this.player,this.NPC,this.talk,null,this);
+    this.game.physics.arcade.collide(this.player,this.NPC,this.talk,null,this);
     this.game.physics.arcade.overlap(this.player, this.doors, this.enterDoor, null, this);
 
     //player movement
