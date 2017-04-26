@@ -5,7 +5,7 @@ TopDownGame.Game = function(){};
 
 TopDownGame.Game.prototype = {
 	preload:function(){
-	// You can use your own methods of making the plugin publicly available. Setting it as a global variable is the easiest solution.
+	//Preloading SlickUI
     slickUI = this.game.plugins.add(Phaser.Plugin.SlickUI);
     slickUI.load('assets/ui/kenney/kenney.json'); // Use the path to your kenney.json. This is the file that defines your theme.
     this.game.load.image('menu-button', 'assets/ui/menu.png');
@@ -30,7 +30,8 @@ TopDownGame.Game.prototype = {
     this.backgroundlayer.resizeWorld();
 
     this.createItems();
-    this.createDoors();    
+    this.createDoors();
+    this.createNPC();    
 
     //create player
     var result = this.findObjectsByType('playerStart', this.map, 'objectsLayer')
@@ -45,13 +46,12 @@ TopDownGame.Game.prototype = {
     //the camera will follow the player in the world
     this.game.camera.follow(this.player);
 
-    //move player with cursor keys
+    //User Keyboard Input
     this.cursors = this.game.input.keyboard.createCursorKeys();
     enter = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
     enter.onDown.add(this.menuControl, this);
 
-    //UI
-    //var panel;
+    //UI using slickUI
 	slickUI.add(panel = new SlickUI.Element.Panel(this.game.width*.7, this.game.height/2-this.game.height*.35, this.game.width, this.game.height*.7));
 
 	var dexbut;
@@ -101,6 +101,16 @@ TopDownGame.Game.prototype = {
       this.createFromTiledObject(element, this.doors);
     }, this);
   },
+  createNPC: function(){
+  	    //create doors
+    this.NPC = this.game.add.group();
+    this.NPC.enableBody = true;
+    result = this.findObjectsByType('NPC', this.map, 'objectsLayer');
+
+    result.forEach(function(element){
+      this.createFromTiledObject(element, this.NPC);
+    }, this);
+  },
 
   //find objects in a Tiled layer that containt a property called "type" equal to a certain value
   findObjectsByType: function(type, map, layer) {
@@ -144,6 +154,7 @@ TopDownGame.Game.prototype = {
     //collision
     this.game.physics.arcade.collide(this.player, this.blockedLayer);
     this.game.physics.arcade.overlap(this.player, this.items, this.collect, null, this);
+    this.game.physics.arcade.overlap(this.player,this.NPC,this.talk,null,this);
     this.game.physics.arcade.overlap(this.player, this.doors, this.enterDoor, null, this);
 
     //player movement
@@ -178,5 +189,8 @@ TopDownGame.Game.prototype = {
   	console.log("Goto Room Number:" + door.roomnum.toString());
   	this.player.room=door.roomnum;
   	this.create(this.game,this.player.room)
+  },
+    talk: function(player, npc) {
+  	console.log("Hello From: "+npc.name);
   },
 };

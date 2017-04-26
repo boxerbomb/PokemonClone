@@ -13,7 +13,8 @@ TopDownGame.Preload.prototype = {
 
     //Level Loading
     this.load.tilemap('level0', 'assets/tilemaps/level0.json', null, Phaser.Tilemap.TILED_JSON);
-    this.load.tilemap('level1', 'assets/tilemaps/level2.json', null, Phaser.Tilemap.TILED_JSON);
+    this.load.tilemap('level1', 'assets/tilemaps/level1.json', null, Phaser.Tilemap.TILED_JSON);
+    this.load.tilemap('level2', 'assets/tilemaps/level2.json', null, Phaser.Tilemap.TILED_JSON);
     this.load.image('gameTiles', 'assets/images/tiles.png');
     //Item Loading
     this.load.image('greencup', 'assets/images/greencup.png');
@@ -21,6 +22,8 @@ TopDownGame.Preload.prototype = {
     this.load.image('browndoor', 'assets/images/browndoor.png');
     //Character Loading
     this.load.image('player', 'assets/images/player.png');
+    //NPC Loading
+    this.load.image('professor', 'assets/images/professor.png');
     //Title Screen
     this.load.image('titlescreen','assets/images/titlescreen.png');
     this.load.image('playBut','assets/images/play.png');
