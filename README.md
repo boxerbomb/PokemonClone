@@ -8,7 +8,7 @@ It uses Tiled to manage the tilemap and it reads in .json for map data.
 
 It uses slick-ui for the in-game menu.
 
-The project is based on [this tutorial](https://gamedevacademy.org/html5-phaser-tutorial-top-down-games-with-tiled) 
+The project is based on [this tutorial](https://gamedevacademy.org/html5-phaser-tutorial-top-down-games-with-tiled)
 
 I will work on a better tutorial for making maps to better help the community.
 
@@ -24,6 +24,10 @@ backgroundLayer
 Objects:
 create a new tile on object layer
 create custom properties for object
+
+Wild Pokemon encounter properties: 
+"type" --> "encounterZone"
+"zoneType" --> ("grass","water","cave")
 
 (required)player starting place:
 "type"-->"playerStart"
