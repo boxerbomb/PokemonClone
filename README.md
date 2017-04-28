@@ -21,27 +21,23 @@ objectsLayer
 blockedLayer
 backgroundLayer
 
-Objects:
+#### Objects:
 create a new tile on object layer
 create custom properties for object
 
-Wild Pokemon encounter properties: 
-
+###### Wild Pokemon encounter properties: 
 "type" --> "encounterZone"
 "zoneType" --> ("grass","water","cave")
 
-(required)player starting place:
-
+###### (required)player starting place:
 "type"-->"playerStart"
 
-door:
-
+###### door:
 "type"-->"door"
 "sprite"-->"browndoor"
 "roomnum"(int)-->desired room number
 
-NPC:
-
+###### NPC:
 "type"-->"npc"
 "sprite"--><imagename>
 "name"-->any name
