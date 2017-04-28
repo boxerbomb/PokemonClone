@@ -34,12 +34,13 @@ TopDownGame.Game.prototype = {
     this.createDoors();
     this.createNPC();
 
-    //create player
+    //Creates Player At Player Start. Needs to be edited to start at door loction
     var result = this.findObjectsByType('playerStart', this.map, 'objectsLayer')
     this.player = this.game.add.sprite(result[0].x, result[0].y, 'player');
     this.player.speed=200;
     this.game.physics.arcade.enable(this.player);
 
+    //Shitty Temporary Fix so player is only initiated in first room and not every room change.
     if(this.map.key=="level0"){
     	this.createPlayer();
     }
@@ -52,22 +53,31 @@ TopDownGame.Game.prototype = {
     enter = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
     enter.onDown.add(this.menuControl, this);
 
-    //UI using slickUI
+    //UI with slickUI
 	slickUI.add(panel = new SlickUI.Element.Panel(this.game.width*.7, this.game.height/2-this.game.height*.35, this.game.width, this.game.height*.7));
 
+	//Menu Button For Pokedex
 	var dexbut;
 	panel.add(dexbut = new SlickUI.Element.Button(0,0, this.game.width, 80));
-	dexbut.events.onInputUp.add(function () {console.log('Clicked button');});
+	dexbut.events.onInputUp.add(function () {
+		console.log('Clicked Pokedex');
+	});
 	dexbut.add(new SlickUI.Element.Text(0,0, "Pokedex")).center();
 
+	//Menu Button For Pokemon Party
 	var pokebut;
 	panel.add(pokebut = new SlickUI.Element.Button(0,80, this.game.width, 80));
-	pokebut.events.onInputUp.add(function () {console.log('Clicked button');});
+	pokebut.events.onInputUp.add(function () {
+		console.log('Clicked Pokemon');
+	});
 	pokebut.add(new SlickUI.Element.Text(0,0, "Pokemon")).center();
 
+	//Menu button for inventory/bag
 	var bagbut;
 	panel.add(bagbut = new SlickUI.Element.Button(0,160, this.game.width, 80));
-	bagbut.events.onInputUp.add(function () {console.log('Clicked button');});
+	bagbut.events.onInputUp.add(function () {
+		console.log('Clicked Bag');
+	});
 	bagbut.add(new SlickUI.Element.Text(0,0, "Bag")).center();
 
 	panel.visible=false;
@@ -170,10 +180,12 @@ TopDownGame.Game.prototype = {
 	update: function() {
     //collision
     this.game.physics.arcade.collide(this.player, this.blockedLayer);
+    //Collected Items not used yet but good to have around
     this.game.physics.arcade.overlap(this.player, this.items, this.collect, null, this);
+    //Collsion with an NPC calls the talk function. Just for a test. Later NPC and item interaction will be one function.
     this.game.physics.arcade.collide(this.player,this.NPC,this.talk,null,this);
     this.game.physics.arcade.overlap(this.player, this.doors, this.enterDoor, null, this);
-		this.game.physics.arcade.overlap(this.player, this.encounterZone, this.triggerEncounter, null, this);
+	this.game.physics.arcade.overlap(this.player, this.encounterZone, this.triggerEncounter, null, this);
 
     //player movement
 
@@ -200,8 +212,7 @@ TopDownGame.Game.prototype = {
 
 	collect: function(player, collectable) {
     console.log('yummy!');
-
-    //remove sprite
+	//remove sprite
     collectable.destroy();
   },
 
