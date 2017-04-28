@@ -26,16 +26,25 @@ create a new tile on object layer
 create custom properties for object
 
 Wild Pokemon encounter properties: 
+
 "type" --> "encounterZone"
 "zoneType" --> ("grass","water","cave")
 
 (required)player starting place:
+
 "type"-->"playerStart"
 
 door:
+
 "type"-->"door"
 "sprite"-->"browndoor"
 "roomnum"(int)-->desired room number
+
+NPC:
+
+"type"-->"npc"
+"sprite"--><imagename>
+"name"-->any name
 
 # Preload
 All assets are assigned in the preload.js file. You must add files there before calling them.
