@@ -1,4 +1,4 @@
-# PokemonClone
+# Pokemon Inspired Game
 A r/learnprogramming group project
 
 Lastest Pull(or close) is live [on my website](http://boxerbomb.com/reddit/)
@@ -13,7 +13,7 @@ The project is based on [this tutorial](https://gamedevacademy.org/html5-phaser-
 I will work on a better tutorial for making maps to better help the community.
 
 ----------------------------------------------------------------------
-# Map Data
+## Map Data
 The map can be any size with 64px tiles
 The game starts on level0 and then door objects can change the level.
 Map data is arranged in 3 layers:
@@ -42,5 +42,5 @@ create custom properties for object
 "sprite"--><imagename>
 "name"-->any name
 
-# Preload
+## Preload
 All assets are assigned in the preload.js file. You must add files there before calling them.
