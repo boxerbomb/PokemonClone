@@ -22,8 +22,8 @@ function Pokemon(species, lvl){
   //EVs
   this.totalEV=0;
   this.hpEV=0;
-  this.atkIV=0;
-  this.defIV=0;
+  this.atkEV=0;
+  this.defEV=0;
   this.spAtkEV=0;
   this.spDefEV=0;
   this.speedEV=0;
@@ -36,6 +36,9 @@ function Pokemon(species, lvl){
   this.spDef=((baseSpDef * 2 + spDefIV + spDefEV/4) * lvl/100) + 5;
   this.speed=((baseSpeed * 2 + speedIV + speedEV/4) * lvl/100) + 5;
 
+
+  this.currenthp=this.maxhp;
+  this.statusEffect=null;
 };
 
 // getters
@@ -62,4 +65,7 @@ Pokemon.prototype.getSpDef = function () {
 };
 Pokemon.prototype.getSpeed = function () {
   return this.speed;
+};
+Pokemon.prototype.getCurrenthp = function () {
+  return currenthp;
 };
