@@ -17,6 +17,9 @@ TopDownGame.Game.prototype = {
   		level=0;
   	}
   	this.map = this.game.add.tilemap('level'+level.toString());
+        
+    this.game.world.removeAll();    // removes previous level from memory
+        
     //the first parameter is the tileset name as specified in Tiled, the second is the key to the asset
     this.map.addTilesetImage('tiles', 'gameTiles');
 
@@ -207,8 +210,13 @@ TopDownGame.Game.prototype = {
 
 	enterDoor: function(player, door) {
   	console.log("Goto Room Number:" + door.roomnum.toString());
-  	this.player.room=door.roomnum;
-  	this.create(this.game,this.player.room)
+    try {
+        this.player.room=door.roomnum;
+        this.create(this.game,this.player.room);
+    }
+  	catch(e) {
+        console.log("Door error: " + e.message);
+    }
   },
 
 	talk: function(player, npc) {
